@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMods.NARFI", "CramMods.NARFI\CramMods.NARFI.csproj", "{0CA60238-4902-433D-8B8E-3EC52D5AD1C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CramMods.NARFI", "CramMods.NARFI\CramMods.NARFI.csproj", "{0CA60238-4902-433D-8B8E-3EC52D5AD1C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMods.NARFI.Examples.RaceGroupsExample1", "Examples\Example1\CramMods.NARFI.Examples.RaceGroupsExample1.csproj", "{AAFE3565-433E-4AA4-B34A-D8AAC88F44AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{691ADA64-18A5-4A87-A995-9EB111D4D510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{0CA60238-4902-433D-8B8E-3EC52D5AD1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA60238-4902-433D-8B8E-3EC52D5AD1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA60238-4902-433D-8B8E-3EC52D5AD1C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAFE3565-433E-4AA4-B34A-D8AAC88F44AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAFE3565-433E-4AA4-B34A-D8AAC88F44AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAFE3565-433E-4AA4-B34A-D8AAC88F44AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAFE3565-433E-4AA4-B34A-D8AAC88F44AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AAFE3565-433E-4AA4-B34A-D8AAC88F44AB} = {691ADA64-18A5-4A87-A995-9EB111D4D510}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E3B5E1A-E329-411C-835A-B8C162478955}
