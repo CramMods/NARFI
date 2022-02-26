@@ -230,7 +230,6 @@ namespace CramMods.NARFI.Tests.RaceGroups
 
         };
 
-
         [TestMethod]
         public void ConvertDictionary1()
         {
@@ -273,6 +272,19 @@ namespace CramMods.NARFI.Tests.RaceGroups
                     Assert.AreEqual(raceKey, truthKey, "FormKeys don't match");
                 }
             }
+        }
+
+        [TestMethod]
+        public void GetNpcRaceGroups()
+        {
+            List<string> expectedGroupNames = new() { "Nord", "Human", "Humanoid", "All" };
+
+            INpcGetter testNpc = State.LoadOrder.PriorityOrder.Npc().WinningOverrides().Where(n => n.EditorID == "Narfi").First();
+            IRaceGroupCollection raceGroups = RaceGroupCollection.FromDictionary(TestDictionary1, State);
+            IList<IRaceGroup> npcGroups = raceGroups.Find(testNpc.Race.Resolve(State.LinkCache));
+
+            Assert.IsTrue(npcGroups.All(rg => expectedGroupNames.Contains(rg.Name)), "Found an invalid result");
+            Assert.IsTrue(expectedGroupNames.All(gn => npcGroups.Any(rg => rg.Name == gn)), "Missing a result");
         }
     }
 }
