@@ -1,7 +1,7 @@
 name: Master
 
 on:
-  workflow_run:
+  workflow_dispatch:
   push:
     branches: [ master ]
   pull_request:
