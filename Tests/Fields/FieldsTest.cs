@@ -11,19 +11,21 @@ namespace CramMods.NARFI.Tests.Fields
         public void TestParsing()
         {
             Dictionary<string, string> testIds = new() {
-                { "editorid", nameof(Field.EditorID) },
-                { "edid", nameof(Field.EditorID) },
-                { "formkey", nameof(Field.FormKey) },
-                { "class", nameof(Field.Class) },
-                { "cnam", nameof(Field.Class) },
-                { "crimefaction", nameof(Field.CrimeFaction) },
-                { "crif", nameof(Field.CrimeFaction) },
-                { "defaultoutfit", nameof(Field.DefaultOutfit) },
-                { "doft", nameof(Field.DefaultOutfit) },
-                { "faction", nameof(Field.Faction) },
-                { "snam", nameof(Field.Faction) },
-                { "haircolor", nameof(Field.HairColor) },
-                { "hclf", nameof(Field.HairColor) }
+                { "editorid", Field.EditorID.Id },
+                { "edid", Field.EditorID.Id },
+                { "formkey", Field.FormKey.Id },
+                { "class", Field.Class.Id },
+                { "cnam", Field.Class.Id },
+                { "crimefaction", Field.CrimeFaction.Id },
+                { "crif", Field.CrimeFaction.Id },
+                { "defaultoutfit", Field.DefaultOutfit.Id },
+                { "doft", Field.DefaultOutfit.Id },
+                { "faction", Field.Faction.Id },
+                { "snam", Field.Faction.Id },
+                { "haircolor", Field.HairColor.Id },
+                { "hclf", Field.HairColor.Id },
+                { "skill:archery", Field.Skill_Archery.Id },
+                { "skill:marksman", Field.Skill_Archery.Id },
             };
 
             foreach (KeyValuePair<string, string> pair in testIds)

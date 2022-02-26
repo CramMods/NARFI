@@ -33,7 +33,13 @@ namespace CramMods.NARFI.Fields
             typeof(T)
                 .GetFields(BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly)
                 .Select(fi => new KeyValuePair<string, T>(fi.Name, (T)fi.GetValue(null)!))
-                .Where(v => v.Key.Equals(name, StringComparison.InvariantCultureIgnoreCase) || v.Value.Id.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                .Where(v => {
+                    if (v.Key.Equals(name, StringComparison.InvariantCultureIgnoreCase)) return true;
+                    if (v.Value.Id.Equals(name, StringComparison.InvariantCultureIgnoreCase)) return true;
+                    if (v.Key.Equals(name.Replace(':', '_'), StringComparison.InvariantCultureIgnoreCase)) return true;
+                    if (v.Value.Id.Equals(name.Replace(':', '_'), StringComparison.InvariantCultureIgnoreCase)) return true;
+                    return false;
+                })
                 .Select(v => v.Value)
                 .FirstOrDefault();
 
