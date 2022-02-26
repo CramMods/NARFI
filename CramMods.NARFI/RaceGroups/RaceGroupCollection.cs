@@ -7,9 +7,9 @@ namespace CramMods.NARFI.RaceGroups
     public class RaceGroupCollection : IRaceGroupCollection
     {
         private List<IRaceGroup> _raceGroups;
-        public List<IRaceGroup> RaceGroups => _raceGroups;
+        public IList<IRaceGroup> RaceGroups => _raceGroups;
 
-        public IEnumerable<IRaceGroup> Find(IRaceGetter race) => _raceGroups.FindAll(rg => rg.Contains(race));
+        public IList<IRaceGroup> Find(IRaceGetter race) => _raceGroups.FindAll(rg => rg.Contains(race));
 
         public IEnumerator<IRaceGroup> GetEnumerator() => _raceGroups.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => _raceGroups.GetEnumerator();

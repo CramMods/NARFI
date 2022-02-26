@@ -4,6 +4,7 @@ namespace CramMods.NARFI.RaceGroups
 {
     public interface IRaceGroupCollection : IEnumerable<IRaceGroup>
     {
-        public IEnumerable<IRaceGroup> Find(IRaceGetter race);
+        public IList<IRaceGroup> Find(IRaceGetter race);
+        public IList<IRaceGroup> RaceGroups { get; }
     }
 }
