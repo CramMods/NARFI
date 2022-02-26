@@ -1,5 +1,6 @@
 using CramMods.NARFI.Fields;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
 namespace CramMods.NARFI.Tests.Fields
@@ -45,6 +46,32 @@ namespace CramMods.NARFI.Tests.Fields
             Field testFieldReal = Field.HairColor;
             Assert.IsTrue(testField1.Equals(testFieldReal));
             Assert.IsFalse(testField2.Equals(testFieldReal));
+        }
+
+        [TestMethod]
+        public void TestFieldPath()
+        {
+            string[] input1a = new[] { "gonna", "fail", "bad" };
+            string[] input1b = new[] { "race", "headpart", "formkey" };
+
+            Assert.ThrowsException<Exception>(() => new FieldPath(input1a));
+            Assert.IsNotNull(new FieldPath(input1b));
+
+            string input2a = "gonna.fail.bad";
+            string input2b = "race.headpart.formkey";
+            string input2c = "skill:smithing";
+
+            Assert.ThrowsException<Exception>(() => new FieldPath(input2a));
+            Assert.IsNotNull(new FieldPath(input2b));
+            Assert.IsNotNull(new FieldPath(input2c));
+
+            FieldPath fieldPath1 = new("RNAM.EDID");
+            Assert.AreEqual(fieldPath1[0], Field.Race);
+
+            FieldPath fieldPath2 = fieldPath1.Clone();
+            Assert.AreEqual(fieldPath1.ToString(), fieldPath2.ToString());
+
+            Assert.AreEqual(fieldPath2.Dequeue(), Field.Race);
         }
     }
 }
