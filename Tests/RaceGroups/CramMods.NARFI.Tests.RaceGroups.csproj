@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<Authors>Cram42</Authors>
+		<Company>CramMods</Company>
+		<Product>NARFI Example 1</Product>
+		<Version>0.0.1</Version>
+		<Copyright>2022</Copyright>
+
+		<RepositoryUrl>https://github.com/CramMods/NARFI</RepositoryUrl>
+
+		<IsPackable>false</IsPackable>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<FileVersion>$(Version)</FileVersion>
+		<RootNamespace>$(AssemblyName)</RootNamespace>
+		
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
+		<PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+		<PackageReference Include="coverlet.collector" Version="3.1.0" />
+		<PackageReference Include="Mutagen.Bethesda" Version="0.36.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\CramMods.NARFI\CramMods.NARFI.csproj" />
+	</ItemGroup>
+
+</Project>
