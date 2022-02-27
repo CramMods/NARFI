@@ -1,24 +1,14 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace CramMods.NARFI.Fields
 {
-    public abstract class FieldBase : IField
+    public abstract class FieldBase : IComparable<FieldBase>, IEquatable<FieldBase>
     {
         protected string _id;
         public string Id => _id;
 
         public FieldBase(string id) => _id = id;
-
-        public override string ToString() => _id;
-
-        public override bool Equals(object? obj)
-        {
-            if (obj == null) return false;
-            if (!obj.GetType().IsAssignableTo(typeof(FieldBase))) return false;
-            return ((FieldBase)obj).Id.Equals(_id, StringComparison.InvariantCultureIgnoreCase);
-        }
-
-        public override int GetHashCode() => _id.GetHashCode();
 
         public static IReadOnlyList<T> GetAll<T>() =>
             typeof(T)
@@ -43,7 +33,18 @@ namespace CramMods.NARFI.Fields
                 .Select(v => v.Value)
                 .FirstOrDefault();
 
-        public int CompareTo(object? obj) => _id.CompareTo(((FieldBase?)obj)?.Id);
+        public override string ToString() => _id;
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (!obj.GetType().IsAssignableTo(typeof(FieldBase))) return false;
+            return Equals((FieldBase)obj);
+        }
+        public override int GetHashCode() => _id.GetHashCode();
+
+        public int CompareTo(FieldBase? obj) => _id.CompareTo(obj?.Id);
+        public bool Equals(FieldBase? other) => other?.Id.Equals(_id, StringComparison.InvariantCultureIgnoreCase) ?? false;
     }
 
 }
