@@ -33,5 +33,29 @@
 
             return returnValue;
         }
+
+        public static IFieldValue? ToSingle(IGenderedFieldValue? gendered, Gender gender)
+        {
+            if (gendered == null) throw new Exception("FieldValue cannot be null");
+            Type innerType = gendered.StoredType;
+
+            Type returnType = typeof(SingleFieldValue<>).MakeGenericType(innerType);
+            ISingleFieldValue? returnValue = (ISingleFieldValue?)Activator.CreateInstance(returnType, gendered.GetRawValue(gender));
+            if (returnValue == null) throw new Exception("Unable to create instance");
+
+            return returnValue;
+        }
+
+        public static ISingleFieldValue ToSingle(IArrayFieldValue? array, int index)
+        {
+            if (array == null) throw new Exception("FieldValue cannot be null");
+            Type innerType = array.StoredType;
+
+            Type returnType = typeof(SingleFieldValue<>).MakeGenericType(innerType);
+            ISingleFieldValue? returnValue = (ISingleFieldValue?)Activator.CreateInstance(returnType, array.GetRawValue(index));
+            if (returnValue == null) throw new Exception("Unable to create instance");
+
+            return returnValue;
+        }
     }
 }
