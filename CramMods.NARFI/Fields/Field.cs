@@ -21,7 +21,10 @@ namespace CramMods.NARFI.Fields
         public static Field Unique = new(nameof(Unique));
         public static Field Essential = new(nameof(Essential));
         public static Field Protected = new(nameof(Protected));
+
         public static Field OppositeGenderAnimations = new(nameof(OppositeGenderAnimations));
+        public static Field OppositeGenderAnims = OppositeGenderAnimations;
+
         public static Field MagickaOffset = new(nameof(MagickaOffset));
         public static Field StaminaOffset = new(nameof(StaminaOffset));
         public static Field Level = new(nameof(Level));
@@ -101,6 +104,7 @@ namespace CramMods.NARFI.Fields
         public static Field Playable = new(nameof(Playable));
         public static Field Swims = new(nameof(Swims));
         public static Field Walks = new(nameof(Walks));
+        public static Field Flies = new(nameof(Flies));
         #endregion
 
         public static Field Class = new(nameof(Class));
