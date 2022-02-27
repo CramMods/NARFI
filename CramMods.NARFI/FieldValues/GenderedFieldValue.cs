@@ -20,7 +20,7 @@
         public T? FemaleValue => _data.FemaleValue;
         public object? RawFemaleValue => FemaleValue;
 
-        public object? GetValue(Gender gender) => (gender == Gender.Male) ? MaleValue : FemaleValue;
+        public object? GetRawValue(Gender gender) => (gender == Gender.Male) ? MaleValue : FemaleValue;
 
         public GenderedFieldValue() : this(default, default) { }
         public GenderedFieldValue(T? maleValue, T? femaleValue) : base(typeof(T))

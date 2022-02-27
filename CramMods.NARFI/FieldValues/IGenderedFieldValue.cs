@@ -5,6 +5,6 @@
         public object? RawMaleValue { get; }
         public object? RawFemaleValue { get; }
 
-        public object? GetValue(Gender gender);
+        public object? GetRawValue(Gender gender);
     }
 }
