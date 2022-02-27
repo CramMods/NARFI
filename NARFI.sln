@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CramMods.NARFI.Tests.FieldV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CramMods.NARFI.Tests.Fields", "Tests\Fields\CramMods.NARFI.Tests.Fields.csproj", "{19B67AA9-24F3-416B-9149-0CB7F9B19BE2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CramMods.NARFI.Tests.ValueGetters", "Tests\ValueGetters\CramMods.NARFI.Tests.ValueGetters.csproj", "{B1CB0474-0A62-4887-845F-4D8539C2B94F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{19B67AA9-24F3-416B-9149-0CB7F9B19BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19B67AA9-24F3-416B-9149-0CB7F9B19BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19B67AA9-24F3-416B-9149-0CB7F9B19BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CB0474-0A62-4887-845F-4D8539C2B94F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CB0474-0A62-4887-845F-4D8539C2B94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CB0474-0A62-4887-845F-4D8539C2B94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CB0474-0A62-4887-845F-4D8539C2B94F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{9368B914-E264-458E-B797-43BC7289F271} = {21F517CA-5AB0-4D5B-AAC3-7A839D8D86B1}
 		{F73CFB53-BAD1-46CA-AF1A-F903F8BAA074} = {21F517CA-5AB0-4D5B-AAC3-7A839D8D86B1}
 		{19B67AA9-24F3-416B-9149-0CB7F9B19BE2} = {21F517CA-5AB0-4D5B-AAC3-7A839D8D86B1}
+		{B1CB0474-0A62-4887-845F-4D8539C2B94F} = {21F517CA-5AB0-4D5B-AAC3-7A839D8D86B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E3B5E1A-E329-411C-835A-B8C162478955}
