@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  release:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.*
+    - name: Install Dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore /p:Version=${{ github.event.release.tag_name }}
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+
+    - name: Publish to NuGet
+      run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --no-symbols
+
+    - name: Zip binaries (CramMods.NARFI.Core)
+      run: powershell Compress-Archive "CramMods.NARFI.Core/bin/Release/*" "CramMods.NARFI.Core.${{ github.event.release.tag_name }}.zip"
+    - name: Add binaries to Release (CramMods.NARFI.Core)
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: CramMods.NARFI.Core.${{ github.event.release.tag_name }}.zip
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ github.event.release.tag_name }}
+
+    - name: Zip binaries (CramMods.NARFI.Skyrim)
+      run: powershell Compress-Archive "CramMods.NARFI.Skyrim/bin/Release/*" "CramMods.NARFI.Skyrim.${{ github.event.release.tag_name }}.zip"
+    - name: Add binaries to Release (CramMods.NARFI.Skyrim)
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: CramMods.NARFI.Skyrim.${{ github.event.release.tag_name }}.zip
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ github.event.release.tag_name }}
