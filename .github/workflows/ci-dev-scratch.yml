@@ -1,11 +1,11 @@
-name: dev
+name: dev-scratch
 
 on:
   workflow_dispatch:
   push:
-    branches: [ dev ]
+    branches: [ dev-scratch ]
   pull_request:
-    branches: [ dev ]
+    branches: [ dev-scratch ]
 
 jobs:
   build:
