@@ -31,17 +31,17 @@ namespace CramMods.NARFI.Tests.Skyrim
         [TestMethod]
         public void TestFilters()
         {
-            IFilter filter1 = new Filter<string>("Race.EditorId", ComparisonOperator.Contains, "bret");
+            IFieldFilter filter1 = new FieldFilter<string>("Race.EditorId", ComparisonOperator.Contains, "bret");
             List<INpcGetter> matching1 = filter1.Find(_npcs, _narfi).ToList();
             Assert.AreEqual(matching1.Count, 1);
             Assert.AreEqual(matching1[0].EditorID, "Delphine");
 
-            IFilter filter2 = new Filter<string>("race", ComparisonOperator.EQ, "BretonRace");
+            IFieldFilter filter2 = new FieldFilter<string>("race", ComparisonOperator.EQ, "BretonRace");
             List<INpcGetter> matching2 = filter2.Find(_npcs, _narfi).ToList();
             Assert.AreEqual(matching2.Count, 1);
             Assert.AreEqual(matching2[0].EditorID, "Delphine");
 
-            IFilter filter3 = new Filter<string>("gender", ComparisonOperator.EQ, "female");
+            IFieldFilter filter3 = new FieldFilter<string>("gender", ComparisonOperator.EQ, "female");
             Assert.IsTrue(filter3.Test(_npcs[3], _narfi));
             Assert.IsFalse(filter3.Test(_npcs[4], _narfi));
         }

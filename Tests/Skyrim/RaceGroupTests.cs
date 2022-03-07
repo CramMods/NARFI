@@ -69,10 +69,10 @@ namespace CramMods.NARFI.Tests.Skyrim
             Assert.IsNotNull(fv1);
             Assert.AreEqual(((IArrayFieldValue)fv1).RawValues.Count, 5);
 
-            IFilter filter1 = new Filter<string>("racegroup", ComparisonOperator.EQ, "Human");
+            IFieldFilter filter1 = new FieldFilter<string>("racegroup", ComparisonOperator.EQ, "Human");
             Assert.IsTrue(filter1.Test(_testNpc, _narfi));
 
-            IFilter filter2 = new Filter<string>("racegroup", ComparisonOperator.EQ, "Beast");
+            IFieldFilter filter2 = new FieldFilter<string>("racegroup", ComparisonOperator.EQ, "Beast");
             Assert.IsFalse(filter2.Test(_testNpc, _narfi));
         }
     }

@@ -5,7 +5,7 @@ using Mutagen.Bethesda.Plugins.Records;
 
 namespace CramMods.NARFI.Filters
 {
-    public class Filter<TVAL> : IFilter
+    public class FieldFilter<TVAL> : IFieldFilter
     {
         protected FieldPath _fieldPath;
         public FieldPath Path { get => _fieldPath; set => _fieldPath = value; }
@@ -20,7 +20,7 @@ namespace CramMods.NARFI.Filters
         protected Dictionary<string, object?> _exensions = new();
         public Dictionary<string, object?> Extensions { get => _exensions; set => _exensions = value; }
 
-        public Filter(FieldPath path, ComparisonOperator op, TVAL? value) => (_fieldPath, _operator, _value) = (path, op, value);
+        public FieldFilter(FieldPath path, ComparisonOperator op, TVAL? value) => (_fieldPath, _operator, _value) = (path, op, value);
 
 
         public bool Test<TREC>(TREC record, IFieldValueGetter fieldValueGetter) where TREC : IMajorRecordGetter

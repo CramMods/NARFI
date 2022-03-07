@@ -30,7 +30,7 @@ namespace CramMods.NARFI.Tests.Core
         [TestMethod]
         public void TestFilter()
         {
-            IFilter filter1 = new Filter<string>("editorid", ComparisonOperator.Contains, "phi");
+            IFieldFilter filter1 = new FieldFilter<string>("editorid", ComparisonOperator.Contains, "phi");
 
             Assert.IsTrue(filter1.Test(_npcs[2], _narfi));
             Assert.IsFalse(filter1.Test(_npcs[3], _narfi));
