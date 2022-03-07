@@ -29,5 +29,6 @@
         public FieldPath(string pathString) : this(pathString.Split('.')) { }
 
         public static implicit operator FieldPath(string s) => new(s);
+        public static implicit operator FieldPath(Field f) => new(f);
     }
 }
