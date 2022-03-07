@@ -14,7 +14,8 @@ namespace CramMods.NARFI.Filters
         private List<IFilter> _filters = new();
         public List<IFilter> Filters { get => _filters; set => _filters = value; }
 
-        public GroupFilter(GroupFilterOperator op, params IFilter[] filters) => (_operator, _filters) = (op, filters.ToList());
+        public GroupFilter(GroupFilterOperator op, IEnumerable<IFilter> filters) => (_operator, _filters) = (op, filters.ToList());
+        public GroupFilter(GroupFilterOperator op, params IFilter[] filters) : this(op, filters.ToList()) { }
 
         public bool Test<T>(T record, IFieldValueGetter fieldValueGetter) where T : IMajorRecordGetter
         {
