@@ -13,7 +13,7 @@ namespace CramMods.NARFI.Tests.Core
     public class NARFITests
     {
         private IGameEnvironmentState<ISkyrimMod, ISkyrimModGetter> _state = GameEnvironment.Typical.Skyrim(SkyrimRelease.SkyrimSE);
-        private List<string> _npcNames = new() { "Narfi", "Gerdur", "Alvor", "Delphine" };
+        private List<string> _npcNames = new() { "Narfi", "Gerdur", "Delphine", "Alvor" };
 
         private NARFI _narfi;
         private List<INpcGetter> _npcs;
@@ -27,9 +27,9 @@ namespace CramMods.NARFI.Tests.Core
         [TestMethod]
         public void TestNARFI()
         {
-            Assert.IsTrue(_narfi.CanGet(_npcs[0], new("editorid")));
+            Assert.IsTrue(_narfi.CanGetFieldValue(_npcs[0], new("editorid")));
 
-            IFieldValue? fv1 = _narfi.Get(_npcs[0], "editorid.test");
+            IFieldValue? fv1 = _narfi.GetFieldValue(_npcs[0], "editorid.test");
 
             Assert.IsNotNull(fv1);
             Assert.IsInstanceOfType(fv1, typeof(IFieldValue));
@@ -41,7 +41,7 @@ namespace CramMods.NARFI.Tests.Core
             Assert.IsTrue(fv1.IsMatch(ComparisonOperator.NE, "OtherString"));
             Assert.IsTrue(fv1.IsMatch(ComparisonOperator.Contains, "nar"));
 
-            IFieldValue? fv2 = _narfi.Get(_npcs[3], "FormKey");
+            IFieldValue? fv2 = _narfi.GetFieldValue(_npcs[3], "FormKey");
             Assert.IsNotNull(fv2);
             Assert.IsTrue(fv2.IsMatch(ComparisonOperator.EQ, "013475:Skyrim.esm"));
         }

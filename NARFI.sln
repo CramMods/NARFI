@@ -8,11 +8,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMods.NARFI.Core", "CramMods.NARFI.Core\CramMods.NARFI.Core.csproj", "{542D6424-0F4F-4712-8059-E27695A5722E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CramMods.NARFI.Core", "CramMods.NARFI.Core\CramMods.NARFI.Core.csproj", "{542D6424-0F4F-4712-8059-E27695A5722E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{27F923C3-0D50-4502-BE86-6BAA22D25A73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMods.NARFI.Tests.Core", "Tests\Core\CramMods.NARFI.Tests.Core.csproj", "{B7C03A90-0B1B-48E9-BC23-232B5EA864F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CramMods.NARFI.Tests.Core", "Tests\Core\CramMods.NARFI.Tests.Core.csproj", "{B7C03A90-0B1B-48E9-BC23-232B5EA864F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMods.NARFI.Skyrim", "CramMods.NARFI.Skyrim\CramMods.NARFI.Skyrim.csproj", "{D56EDFCD-E5F2-4A11-8577-78CEC855DD68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMods.NARFI.Tests.Skyrim", "Tests\Skyrim\CramMods.NARFI.Tests.Skyrim.csproj", "{0A62FFD0-F9B0-4098-A4F2-08242DEC7A40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,12 +32,21 @@ Global
 		{B7C03A90-0B1B-48E9-BC23-232B5EA864F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C03A90-0B1B-48E9-BC23-232B5EA864F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C03A90-0B1B-48E9-BC23-232B5EA864F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56EDFCD-E5F2-4A11-8577-78CEC855DD68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56EDFCD-E5F2-4A11-8577-78CEC855DD68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56EDFCD-E5F2-4A11-8577-78CEC855DD68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56EDFCD-E5F2-4A11-8577-78CEC855DD68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A62FFD0-F9B0-4098-A4F2-08242DEC7A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A62FFD0-F9B0-4098-A4F2-08242DEC7A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A62FFD0-F9B0-4098-A4F2-08242DEC7A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A62FFD0-F9B0-4098-A4F2-08242DEC7A40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B7C03A90-0B1B-48E9-BC23-232B5EA864F4} = {27F923C3-0D50-4502-BE86-6BAA22D25A73}
+		{0A62FFD0-F9B0-4098-A4F2-08242DEC7A40} = {27F923C3-0D50-4502-BE86-6BAA22D25A73}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E3B5E1A-E329-411C-835A-B8C162478955}
