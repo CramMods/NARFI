@@ -2,7 +2,7 @@
 {
     public interface IArrayFieldValue : IFieldValue
     {
-        public IEnumerable<object> RawValues { get; }
+        public IReadOnlyList<object> RawValues { get; }
         public object GetRawValue(int index);
     }
 }

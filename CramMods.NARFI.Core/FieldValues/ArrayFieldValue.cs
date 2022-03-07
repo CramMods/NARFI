@@ -8,8 +8,8 @@
             set => _rawData = value;
         }
 
-        public IEnumerable<T> Values => _value;
-        public IEnumerable<object> RawValues => _value.ConvertAll(v => (object)v!);
+        public IReadOnlyList<T> Values => _value;
+        public IReadOnlyList<object> RawValues => _value.ConvertAll(v => (object)v!);
 
         public T GetValue(int index) => throw new NotImplementedException();
         public object GetRawValue(int index) => throw new NotImplementedException();
