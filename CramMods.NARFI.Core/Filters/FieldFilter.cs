@@ -23,6 +23,7 @@ namespace CramMods.NARFI.Filters
         public FieldFilter(FieldPath path, ComparisonOperator op, TVAL? value) => (_fieldPath, _operator, _value) = (path, op, value);
         public FieldFilter(string path, ComparisonOperator op, TVAL? value) : this(new FieldPath(path), op, value) { }
 
+        public override string ToString() => $"{_fieldPath} {_operator} {_value}";
 
         public bool Test<TREC>(TREC record, IFieldValueGetter fieldValueGetter) where TREC : IMajorRecordGetter
         {

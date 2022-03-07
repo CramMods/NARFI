@@ -17,6 +17,8 @@ namespace CramMods.NARFI.Filters
         public GroupFilter(GroupFilterOperator op, IEnumerable<IFilter> filters) => (_operator, _filters) = (op, filters.ToList());
         public GroupFilter(GroupFilterOperator op, params IFilter[] filters) : this(op, filters.ToList()) { }
 
+        public override string ToString() => $"{_operator} [{_filters.Count}]";
+
         public bool Test<T>(T record, IFieldValueGetter fieldValueGetter) where T : IMajorRecordGetter
         {
             return _operator switch 
