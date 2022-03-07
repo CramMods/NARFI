@@ -1,4 +1,5 @@
-﻿using CramMods.NARFI.Skyrim;
+﻿using CramMods.NARFI.FieldValues;
+using CramMods.NARFI.Skyrim;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments;
@@ -37,12 +38,37 @@ namespace CramMods.NARFI.Tests.Skyrim
             { "CheckDups", new[] { "Human", "Human", "Humanoid", "All" } },
         };
 
-        [TestMethod]
-        public void TestRaceGroupConversion()
+        private List<RaceGroup> _raceGroups;
+
+        private SkyrimPlugin _skyrimPlugin;
+        private NARFI _narfi;
+        private INpcGetter _testNpc;
+
+        public RaceGroupTests()
         {
-            List<RaceGroup> raceGroups = RaceGroup.FromIdDictionary(raceIdGroups, _state.LoadOrder.PriorityOrder.Race().WinningOverrides()).ToList();
-            Assert.AreEqual(raceGroups.Count, 18);
-            Assert.AreEqual(raceGroups[17].Races.Count, 23);
+            _raceGroups = RaceGroup.FromIdDictionary(raceIdGroups, _state.LoadOrder.PriorityOrder.Race().WinningOverrides()).ToList();
+
+            _skyrimPlugin = new SkyrimPlugin();
+            _skyrimPlugin.SetRaceGroups(_raceGroups);
+
+            _narfi = new(_state);
+            _narfi.RegisterPlugin(_skyrimPlugin);
+
+            _testNpc = _state.LoadOrder.PriorityOrder.Npc().WinningOverrides().First(n => n.EditorID == "Narfi");
+        }
+
+
+        [TestMethod]
+        public void TestRaceGroups()
+        {
+            Assert.AreEqual(_raceGroups.Count, 18);
+            Assert.AreEqual(_raceGroups[17].Races.Count, 23);
+
+            IFieldValue? fv1 = _narfi.GetFieldValue(_testNpc, "racegroup");
+            Assert.IsNotNull(fv1);
+            Assert.AreEqual(((IArrayFieldValue)fv1).RawValues.Count, 5);
+
+            throw new Exception();
         }
     }
 }

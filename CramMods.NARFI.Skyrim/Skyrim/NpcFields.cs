@@ -4,6 +4,8 @@ namespace CramMods.NARFI.Skyrim
 {
     public static class NpcFields
     {
+        public static Field RaceGroup = new(nameof(RaceGroup));
+
         public static Field Gender = new(nameof(Gender));
         public static Field Unique = new(nameof(Unique));
         public static Field Essential = new(nameof(Essential));

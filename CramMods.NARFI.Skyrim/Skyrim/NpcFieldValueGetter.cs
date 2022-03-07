@@ -10,6 +10,8 @@ namespace CramMods.NARFI.Skyrim
 {
     public class NpcFieldValueGetter : IFieldValueGetter
     {
+        private List<RaceGroup> _raceGroups;
+
         private IFieldValueGetter? _master;
         public void SetMasterGetter(IFieldValueGetter master) => _master = master;
 
@@ -22,9 +24,17 @@ namespace CramMods.NARFI.Skyrim
             return NpcFields.All().Any(f => f.Equals(field));
         }
 
-
         public IFieldValue? GetFieldValue(INpcGetter npc, Field field, FieldPath remainingPath)
         {
+            if (field.Equals(NpcFields.RaceGroup))
+            {
+                IRaceGetter race = npc.Race.Resolve(_linkCache!);
+                IEnumerable<string> raceGroupNames = _raceGroups
+                    .Where(rg => rg.Contains(race))
+                    .Select(rg => rg.Name);
+                return new ArrayFieldValue<string>(raceGroupNames);
+            }
+
             if (field.Equals(NpcFields.Gender)) return new SingleFieldValue<Gender>(GetGender(npc));
             if (field.Equals(NpcFields.Unique)) return new SingleFieldValue<bool>(npc.Configuration.Flags.HasFlag(NpcConfiguration.Flag.Unique));
             if (field.Equals(NpcFields.Essential)) return new SingleFieldValue<bool>(npc.Configuration.Flags.HasFlag(NpcConfiguration.Flag.Essential));
@@ -93,6 +103,13 @@ namespace CramMods.NARFI.Skyrim
 
         public IFieldValue? GetFieldValue(IMajorRecordGetter record, Field field, FieldPath remainingPath) => GetFieldValue((INpcGetter)record, field, remainingPath);
         public IFieldValue? GetFieldValue(IMajorRecordGetter record, FieldPath path) => GetFieldValue(record, path.Dequeue(), path);
+
+
+        public NpcFieldValueGetter(List<RaceGroup> raceGroups)
+        {
+            _raceGroups = raceGroups;
+        }
+
 
         private Gender GetGender(INpcGetter npc) => npc.Configuration.Flags.HasFlag(NpcConfiguration.Flag.Female) ? Gender.Female : Gender.Male;
 
