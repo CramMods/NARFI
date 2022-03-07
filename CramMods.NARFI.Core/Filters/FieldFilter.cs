@@ -21,6 +21,7 @@ namespace CramMods.NARFI.Filters
         public Dictionary<string, object?> Extensions { get => _exensions; set => _exensions = value; }
 
         public FieldFilter(FieldPath path, ComparisonOperator op, TVAL? value) => (_fieldPath, _operator, _value) = (path, op, value);
+        public FieldFilter(string path, ComparisonOperator op, TVAL? value) : this(new FieldPath(path), op, value) { }
 
 
         public bool Test<TREC>(TREC record, IFieldValueGetter fieldValueGetter) where TREC : IMajorRecordGetter
