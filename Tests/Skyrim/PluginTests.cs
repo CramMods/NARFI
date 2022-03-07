@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Skyrim
+namespace CramMods.NARFI.Tests.Skyrim
 {
     [TestClass]
     public class PluginTests
