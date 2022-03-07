@@ -4,11 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments;
 using Mutagen.Bethesda.Skyrim;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CramMods.NARFI.Tests.Core
 {
@@ -35,9 +32,20 @@ namespace CramMods.NARFI.Tests.Core
             Assert.IsTrue(filter1.Test(_npcs[2], _narfi));
             Assert.IsFalse(filter1.Test(_npcs[3], _narfi));
 
-            IEnumerable<INpcGetter> matching = filter1.Find(_npcs, _narfi);
-            Assert.AreEqual(matching.Count(), 1);
-            Assert.AreEqual(matching.First().EditorID, "Delphine");
+            IEnumerable<INpcGetter> matching1 = filter1.Find(_npcs, _narfi);
+            Assert.AreEqual(matching1.Count(), 1);
+            Assert.AreEqual(matching1.First().EditorID, "Delphine");
+
+            IFilter filter2 = new GroupFilter(GroupFilterOperator.AND,
+                new FieldFilter<string>("editorid", ComparisonOperator.Contains, "phi"),
+                new FieldFilter<string>("editorid", ComparisonOperator.Contains, "delp"));
+
+            Assert.IsTrue(filter2.Test(_npcs[2], _narfi));
+            Assert.IsFalse(filter1.Test(_npcs[3], _narfi));
+
+            IEnumerable<INpcGetter> matching2 = filter2.Find(_npcs, _narfi);
+            Assert.AreEqual(matching2.Count(), 1);
+            Assert.AreEqual(matching2.First().EditorID, "Delphine");
 
         }
     }
