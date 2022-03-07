@@ -1,9 +1,7 @@
 ﻿using CramMods.NARFI.Fields;
 using CramMods.NARFI.FieldValueGetters;
 using CramMods.NARFI.Plugins;
-using Mutagen.Bethesda.Plugins.Cache;
-using Mutagen.Bethesda.Skyrim;
-using System.Reflection;
+using CramMods.NARFI.Skyrim;
 
 namespace CramMods.NARFI
 {
@@ -15,13 +13,20 @@ namespace CramMods.NARFI
         private List<IFieldValueGetter> _getters = new();
         public override IReadOnlyList<IFieldValueGetter> Getters => _getters.AsReadOnly();
 
+        private List<RaceGroup> _raceGroups = new();
+        public void SetRaceGroups(List<RaceGroup> raceGroups)
+        {
+            _raceGroups.Clear();
+            _raceGroups.AddRange(raceGroups);
+        }
+
         public SkyrimPlugin() : base("Skyrim") 
         {
-            _fields.AddRange(Skyrim.NpcFields.All());
-            _getters.Add(new Skyrim.NpcFieldValueGetter());
+            _fields.AddRange(NpcFields.All());
+            _getters.Add(new NpcFieldValueGetter(_raceGroups));
 
-            _fields.AddRange(Skyrim.RaceFields.All());
-            _getters.Add(new Skyrim.RaceFieldValueGetter());
+            _fields.AddRange(RaceFields.All());
+            _getters.Add(new RaceFieldValueGetter());
 
             _fields = _fields
                 .DistinctBy(f => f.Name)
