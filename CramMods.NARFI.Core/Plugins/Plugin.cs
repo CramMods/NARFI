@@ -12,8 +12,8 @@ namespace CramMods.NARFI.Plugins
         protected IGameEnvironmentState? _state;
         public void SetGameEnvironmentState(IGameEnvironmentState state) => _state = state;
 
-        public abstract IEnumerable<Field> Fields { get; }
-        public abstract IEnumerable<IFieldValueGetter> Getters { get; }
+        public abstract IReadOnlyList<Field> Fields { get; }
+        public abstract IReadOnlyList<IFieldValueGetter> Getters { get; }
         public override string ToString() => Name;
 
         public Plugin(string name) => _name = name;

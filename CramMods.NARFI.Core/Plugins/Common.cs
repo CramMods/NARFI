@@ -7,8 +7,8 @@ namespace CramMods.NARFI.Plugins
 {
     public class Common : Plugin
     {
-        public override IEnumerable<Field> Fields => _fields;
-        public override IEnumerable<IFieldValueGetter> Getters => _getters;
+        public override IReadOnlyList<Field> Fields => _fields.AsReadOnly();
+        public override IReadOnlyList<IFieldValueGetter> Getters => _getters.AsReadOnly();
 
         private static List<Field> _fields = new()
         {

@@ -8,7 +8,7 @@ namespace CramMods.NARFI.Plugins
     {
         public void SetGameEnvironmentState(IGameEnvironmentState state);
         public string Name { get; }
-        public IEnumerable<Field> Fields { get; }
-        public IEnumerable<IFieldValueGetter> Getters { get; }
+        public IReadOnlyList<Field> Fields { get; }
+        public IReadOnlyList<IFieldValueGetter> Getters { get; }
     }
 }
