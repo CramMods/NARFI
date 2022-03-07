@@ -13,16 +13,16 @@ namespace CramMods.NARFI
         public NARFI(IGameEnvironmentState state)
         {
             _state = state;
-            Register(new Common());
+            RegisterPlugin(new Common());
         }
 
         private List<IPlugin> _plugins = new();
-        public void Register(IPlugin plugin)
+        public void RegisterPlugin(IPlugin plugin)
         {
             plugin.SetGameEnvironmentState(_state);
             _plugins.Add(plugin);
         }
-        public void Unregister(IPlugin plugin) => _plugins.Remove(plugin);
+        public void UnregisterPlugin(IPlugin plugin) => _plugins.Remove(plugin);
 
         private List<IFieldValueGetter> _getters => _plugins.SelectMany(p => p.Getters).ToList();
         public bool CanGet(IMajorRecordGetter record, Field field) => _getters.Any(getter => getter.CanGet(record, field));

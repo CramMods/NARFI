@@ -2,7 +2,7 @@
 {
     public interface IPluginRegistry
     {
-        public void Register(IPlugin plugin);
-        public void Unregister(IPlugin plugin);
+        public void RegisterPlugin(IPlugin plugin);
+        public void UnregisterPlugin(IPlugin plugin);
     }
 }
