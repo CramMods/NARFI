@@ -14,7 +14,7 @@ namespace CramMods.NARFI.Plugins
 
         public abstract IReadOnlyList<Field> Fields { get; }
         public abstract IReadOnlyList<IFieldValueGetter> Getters { get; }
-        public override string ToString() => Name;
+        public override string ToString() => _name;
 
         public Plugin(string name) => _name = name;
     }

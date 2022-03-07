@@ -25,7 +25,7 @@ namespace CramMods.NARFI.Filters
 
         public bool Test<TREC>(TREC record, IFieldValueGetter fieldValueGetter) where TREC : IMajorRecordGetter
         {
-            IFieldValue? fieldValue = fieldValueGetter.Get(record, _fieldPath);
+            IFieldValue? fieldValue = fieldValueGetter.GetFieldValue(record, _fieldPath.Clone());
             return fieldValue?.IsMatch(_operator, _value) ?? false;
         }
 
