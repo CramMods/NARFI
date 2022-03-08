@@ -48,5 +48,29 @@ namespace CramMods.NARFI.Tests.Core
             Assert.AreEqual(matching2.First().EditorID, "Delphine");
 
         }
+
+        [TestMethod]
+        public void TestFilterUtils()
+        {
+            IFilter filter1 = new FieldFilter<string>("some.path", ComparisonOperator.EQ, "somestring1");
+            IFilter filter2 = new FieldFilter<string>("other.path", ComparisonOperator.EQ, "somestring2");
+
+            IFilter? merged1 = FilterUtils.Merge(filter1, null);
+            Assert.AreEqual(merged1!.ToString(), filter1.ToString());
+
+            IFilter? merged2 = FilterUtils.Merge(null, filter2);
+            Assert.AreEqual(merged2!.ToString(), filter2.ToString());
+
+            IFilter? merged3 = FilterUtils.Merge(filter1, filter2);
+            Assert.IsInstanceOfType(merged3!, typeof(GroupFilter));
+            Assert.AreEqual(((GroupFilter)merged3!).Filters[0].ToString(), filter1.ToString());
+            Assert.AreEqual(((GroupFilter)merged3!).Filters[1].ToString(), filter2.ToString());
+
+            IFilter filter3 = new FieldFilter<int>("numerical.field.path", ComparisonOperator.LT, 42);
+            IFilter groupFilter1 = new GroupFilter(GroupFilterOperator.AND, filter1, filter2);
+
+            IFilter? merged4 = FilterUtils.Merge(filter3, groupFilter1);
+            Assert.AreEqual(((GroupFilter)merged4!).Filters.Count, 3);
+        }
     }
 }
